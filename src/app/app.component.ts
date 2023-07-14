@@ -7,6 +7,12 @@ const todos = [
   { id: 4, title: 'Angular', completed: false },
 ];
 
+interface Todo {
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,4 +22,8 @@ export class AppComponent {
   editing = false;
   title = 'angular-todo-app';
   todos = todos;
+
+  handleTodoToggle(event: Event, todo: Todo) {
+    todo.completed = (event.target as HTMLInputElement).checked;
+  }
 }
